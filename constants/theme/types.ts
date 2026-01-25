@@ -1,0 +1,39 @@
+import { borderRadius, spacing } from "./spacing";
+import { typography } from "./typography";
+
+export interface ThemeColors {
+  primary: string;
+  secondary: string;
+  background: string;
+  surface: string;
+  textPrimary: string;
+  textSecondary: string;
+  danger: string;
+  success: string;
+  successLight: string;
+  warning: string;
+  border: string;
+}
+export type ColorName = keyof ThemeColors;
+
+export type Spacing = typeof spacing;
+export type SpacingSize = keyof Spacing;
+
+export type BorderRadius = typeof borderRadius;
+export type BorderRadiusSize = keyof BorderRadius;
+
+export type Typography = typeof typography;
+export type FontSize = keyof Typography["size"];
+export type FontWeight = keyof Typography["weight"];
+
+export interface ColorPalette {
+  light: ThemeColors;
+  dark: ThemeColors;
+}
+
+export interface Theme {
+  colors: ColorPalette;
+  spacing: Spacing;
+  borderRadius: BorderRadius;
+  typography: Typography;
+}

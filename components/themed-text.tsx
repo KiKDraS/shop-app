@@ -1,9 +1,9 @@
-import { colors, typography } from "@/constants/theme";
+import { ColorName, typography } from "@/constants/theme";
 import { fonts } from "@/constants/theme/typography";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet, Text, type TextProps } from "react-native";
 
-const colorMapping: Record<string, keyof typeof colors.light> = {
+const colorMapping: Record<string, ColorName> = {
   default: "textPrimary",
   title: "textPrimary",
   subtitle: "textPrimary",
@@ -12,22 +12,18 @@ const colorMapping: Record<string, keyof typeof colors.light> = {
 };
 
 export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
   type?: keyof typeof textStyles;
-  colorType?: keyof typeof colors.light;
+  colorType?: ColorName;
 };
 
 export function ThemedText({
   style,
-  lightColor,
-  darkColor,
   type = "default",
   colorType,
   ...rest
 }: ThemedTextProps) {
   const colorKey = colorType || colorMapping[type] || "textPrimary";
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, colorKey);
+  const color = useThemeColor(colorKey);
 
   const typeStyle = textStyles[type] || textStyles.default;
 

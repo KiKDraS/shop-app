@@ -1,4 +1,6 @@
-export const colors = {
+import { ColorPalette } from "./types";
+
+export const colors: ColorPalette = {
   light: {
     primary: "#4838D1",
     secondary: "#8E44AD",
