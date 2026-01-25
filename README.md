@@ -7,7 +7,7 @@ experiencia de compra fluida y moderna. Permite a los usuarios navegar por
 categorías, gestionar un carrito de compras con persistencia de datos,
 autenticarse de forma segura y utilizar funciones nativas del dispositivo.
 
-## 📱 Diseño y Prototipado (Figma)
+## 📱 Diseño y Prototipo (Figma)
 
 El diseño de la interfaz de usuario (UI) y la experiencia de usuario (UX) se
 basó en el siguiente prototipo de alta fidelidad:

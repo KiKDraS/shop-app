@@ -1,60 +1,67 @@
-import { StyleSheet, Text, type TextProps } from 'react-native';
+import { colors, typography } from "@/constants/theme";
+import { fonts } from "@/constants/theme/typography";
+import { useThemeColor } from "@/hooks/use-theme-color";
+import { StyleSheet, Text, type TextProps } from "react-native";
 
-import { useThemeColor } from '@/hooks/use-theme-color';
+const colorMapping: Record<string, keyof typeof colors.light> = {
+  default: "textPrimary",
+  title: "textPrimary",
+  subtitle: "textPrimary",
+  caption: "textSecondary",
+  link: "primary",
+};
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+  type?: keyof typeof textStyles;
+  colorType?: keyof typeof colors.light;
 };
 
 export function ThemedText({
   style,
   lightColor,
   darkColor,
-  type = 'default',
+  type = "default",
+  colorType,
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const colorKey = colorType || colorMapping[type] || "textPrimary";
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, colorKey);
 
-  return (
-    <Text
-      style={[
-        { color },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
-        style,
-      ]}
-      {...rest}
-    />
-  );
+  const typeStyle = textStyles[type] || textStyles.default;
+
+  return <Text style={[{ color }, typeStyle, style]} {...rest} />;
 }
 
-const styles = StyleSheet.create({
+const textStyles = StyleSheet.create({
   default: {
-    fontSize: 16,
+    fontFamily: fonts.sans,
+    fontSize: typography.size.body,
+    fontWeight: typography.weight.regular,
     lineHeight: 24,
-  },
-  defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: '600',
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontFamily: fonts.sans,
+    fontSize: typography.size.title,
+    fontWeight: typography.weight.bold,
     lineHeight: 32,
   },
   subtitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: fonts.sans,
+    fontSize: typography.size.subtitle,
+    fontWeight: typography.weight.semiBold,
+    lineHeight: 28,
+  },
+  caption: {
+    fontFamily: fonts.sans,
+    fontSize: typography.size.caption,
+    fontWeight: typography.weight.medium,
   },
   link: {
-    lineHeight: 30,
-    fontSize: 16,
-    color: '#0a7ea4',
+    fontFamily: fonts.sans,
+    fontSize: typography.size.body,
+    fontWeight: typography.weight.semiBold,
+    textDecorationLine: "underline",
   },
 });
