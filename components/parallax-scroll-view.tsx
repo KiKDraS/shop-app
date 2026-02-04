@@ -8,23 +8,17 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { ThemedView } from "@/components/themed-view";
-import { useColorScheme } from "@/hooks/use-color-scheme";
+import { spacing } from "@/constants/theme";
 import { useThemeColor } from "@/hooks/use-theme-color";
 
 const HEADER_HEIGHT = 250;
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
-  headerBackgroundColor: { dark: string; light: string };
 }>;
 
-export default function ParallaxScrollView({
-  children,
-  headerImage,
-  headerBackgroundColor,
-}: Props) {
+export default function ParallaxScrollView({ children, headerImage }: Props) {
   const backgroundColor = useThemeColor("background");
-  const colorScheme = useColorScheme() ?? "light";
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollOffset(scrollRef);
   const headerAnimatedStyle = useAnimatedStyle(() => {
@@ -55,11 +49,7 @@ export default function ParallaxScrollView({
       scrollEventThrottle={16}
     >
       <Animated.View
-        style={[
-          styles.header,
-          { backgroundColor: headerBackgroundColor[colorScheme] },
-          headerAnimatedStyle,
-        ]}
+        style={[styles.header, { backgroundColor }, headerAnimatedStyle]}
       >
         {headerImage}
       </Animated.View>
@@ -78,7 +68,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 32,
+    padding: spacing.md,
     gap: 16,
     overflow: "hidden",
   },

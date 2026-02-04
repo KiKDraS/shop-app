@@ -1,5 +1,5 @@
 import { borderRadius, spacing } from "./spacing";
-import { typography } from "./typography";
+import { createTextStyles, typography } from "./typography";
 
 export interface ThemeColors {
   primary: string;
@@ -24,7 +24,7 @@ export type BorderRadiusSize = keyof BorderRadius;
 
 export type Typography = typeof typography;
 export type FontSize = keyof Typography["size"];
-export type FontWeight = keyof Typography["weight"];
+export type TextStyles = ReturnType<typeof createTextStyles>;
 
 export interface ColorPalette {
   light: ThemeColors;
@@ -36,4 +36,5 @@ export interface Theme {
   spacing: Spacing;
   borderRadius: BorderRadius;
   typography: Typography;
+  textStyles: TextStyles;
 }

@@ -1,7 +1,15 @@
 import { ThemedSafeAreaView } from "@/components/themed-safe-area-view";
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/product/123");
+  }, [router]);
+
   return (
     <ThemedSafeAreaView>
       <h1>Home</h1>

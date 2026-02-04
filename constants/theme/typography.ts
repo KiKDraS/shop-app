@@ -1,18 +1,34 @@
-import { Platform } from "react-native";
+import { Platform, StyleSheet } from "react-native";
+import { ThemeColors, Typography } from "./types";
 
 export const typography = {
   fontFamily: "Inter-Regular",
   size: {
+    hero: 32,
+    display: 28,
     title: 24,
-    subtitle: 18,
-    body: 14,
-    caption: 12,
+    subtitle: 20,
+    heading: 18,
+    body: 16,
+    caption: 14,
+    small: 12,
+    tiny: 10,
   },
-  weight: {
-    regular: 400 as const,
-    medium: 500 as const,
-    semiBold: 600 as const,
-    bold: 700 as const,
+  lineHeight: {
+    hero: 38,
+    display: 32,
+    title: 28,
+    subtitle: 24,
+    heading: 24,
+    body: 24,
+    caption: 20,
+    small: 16,
+  },
+  fonts: {
+    regular: "Inter-Regular",
+    medium: "Inter-Medium",
+    semiBold: "Inter-SemiBold",
+    bold: "Inter-Bold",
   },
 };
 
@@ -31,3 +47,67 @@ export const fonts = Platform.select({
     mono: "monospace",
   },
 });
+
+export const createTextStyles = (
+  colors: ThemeColors,
+  typography: Typography,
+) => {
+  return StyleSheet.create({
+    heroTitle: {
+      fontFamily: typography.fonts.bold,
+      fontSize: typography.size.hero,
+      lineHeight: typography.lineHeight.hero,
+      color: colors.textPrimary,
+      textAlign: "center",
+    },
+    screenTitle: {
+      fontFamily: typography.fonts.semiBold,
+      fontSize: typography.size.subtitle,
+      lineHeight: typography.lineHeight.subtitle,
+      color: colors.textPrimary,
+      textAlign: "center",
+    },
+    sectionTitle: {
+      fontFamily: typography.fonts.semiBold,
+      fontSize: typography.size.heading,
+      lineHeight: typography.lineHeight.heading,
+      color: colors.textPrimary,
+      marginBottom: 12,
+    },
+    priceLarge: {
+      fontFamily: typography.fonts.bold,
+      fontSize: typography.size.display,
+      color: colors.primary,
+    },
+    priceCard: {
+      fontFamily: typography.fonts.bold,
+      fontSize: typography.size.caption,
+      color: colors.primary,
+    },
+    discountText: {
+      fontFamily: typography.fonts.medium,
+      fontSize: typography.size.caption,
+      color: colors.danger,
+      textDecorationLine: "line-through",
+      marginLeft: 8,
+    },
+    bodyRegular: {
+      fontFamily: typography.fonts.regular,
+      fontSize: typography.size.body,
+      lineHeight: typography.lineHeight.body,
+      color: colors.textPrimary,
+    },
+    description: {
+      fontFamily: typography.fonts.regular,
+      fontSize: typography.size.caption,
+      lineHeight: typography.lineHeight.caption,
+      color: colors.textSecondary,
+    },
+    inputLabel: {
+      fontFamily: typography.fonts.medium,
+      fontSize: typography.size.caption,
+      color: colors.textPrimary,
+      marginBottom: 6,
+    },
+  });
+};

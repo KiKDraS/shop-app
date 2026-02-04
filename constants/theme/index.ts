@@ -1,13 +1,14 @@
 import { colors } from "./colors";
 import { borderRadius, spacing } from "./spacing";
 import { Theme } from "./types";
-import { typography } from "./typography";
+import { createTextStyles, typography } from "./typography";
 
 export const theme: Theme = {
   colors,
   spacing,
   borderRadius,
   typography,
+  textStyles: createTextStyles(colors.light, typography),
 };
 
 export { colors } from "./colors";
@@ -20,7 +21,6 @@ export type {
   ColorName,
   ColorPalette,
   FontSize,
-  FontWeight,
   Spacing,
   SpacingSize,
   Theme,
