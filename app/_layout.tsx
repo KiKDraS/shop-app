@@ -1,8 +1,4 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
@@ -17,7 +13,8 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 
-import { useColorScheme } from "@/hooks/use-color-scheme";
+import { AppDarkTheme, AppLightTheme } from "@/constants/theme";
+import { useColorScheme } from "@/hooks";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -48,7 +45,9 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider
+      value={colorScheme === "dark" ? AppDarkTheme : AppLightTheme}
+    >
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>

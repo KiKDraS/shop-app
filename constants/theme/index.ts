@@ -1,3 +1,5 @@
+import type { Theme as NativeTheme } from "@react-navigation/native";
+import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { colors } from "./colors";
 import { borderRadius, spacing } from "./spacing";
 import { Theme } from "./types";
@@ -27,3 +29,29 @@ export type {
   ThemeColors,
   Typography,
 } from "./types";
+
+export const AppLightTheme: NativeTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: colors.light.primary,
+    background: colors.light.background,
+    card: colors.light.surface,
+    text: colors.light.textPrimary,
+    border: colors.light.border,
+    notification: colors.light.danger,
+  },
+};
+
+export const AppDarkTheme: NativeTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    primary: colors.dark.primary,
+    background: colors.dark.background,
+    card: colors.dark.surface,
+    text: colors.dark.textPrimary,
+    border: colors.dark.border,
+    notification: colors.dark.danger,
+  },
+};

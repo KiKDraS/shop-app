@@ -1,6 +1,6 @@
 import { ParallaxScrollView, ThemedView } from "@/components/layout";
 import { Button } from "@/components/ui";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/hooks";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { Image, Platform, StyleSheet, Text, View } from "react-native";
 
