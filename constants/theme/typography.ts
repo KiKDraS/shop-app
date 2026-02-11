@@ -109,5 +109,17 @@ export const createTextStyles = (
       color: colors.textPrimary,
       marginBottom: 6,
     },
+    buttonText: {
+      fontFamily: typography.fonts.medium,
+      fontSize: typography.size.body,
+      lineHeight: typography.lineHeight.body,
+      textAlign: "center",
+    },
+    smallLabel: {
+      fontFamily: typography.fonts.regular,
+      fontSize: typography.size.small,
+      lineHeight: typography.lineHeight.small,
+      color: colors.textSecondary,
+    },
   });
 };

@@ -3,7 +3,9 @@ import { ColorPalette } from "./types";
 export const colors: ColorPalette = {
   light: {
     primary: "#4838D1",
+    onPrimary: "#FFFFFF",
     secondary: "#8E44AD",
+    onSecondary: "#FFFFFF",
     background: "#FFFFFF",
     surface: "#F6F8FA",
     textPrimary: "#121420",
@@ -16,7 +18,9 @@ export const colors: ColorPalette = {
   },
   dark: {
     primary: "#7367F0",
+    onPrimary: "#FFFFFF",
     secondary: "#A259FF",
+    onSecondary: "#FFFFFF",
     background: "#121212",
     surface: "#1E1E1E",
     textPrimary: "#E4E6EB",

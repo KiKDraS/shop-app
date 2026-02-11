@@ -3,7 +3,9 @@ import { createTextStyles, typography } from "./typography";
 
 export interface ThemeColors {
   primary: string;
+  onPrimary: string;
   secondary: string;
+  onSecondary: string;
   background: string;
   surface: string;
   textPrimary: string;

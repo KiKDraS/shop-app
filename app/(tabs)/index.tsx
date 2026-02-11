@@ -1,7 +1,6 @@
-import { ThemedSafeAreaView } from "@/components/themed-safe-area-view";
+import { ThemedView } from "@/components/layout";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { StyleSheet } from "react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -11,27 +10,8 @@ export default function HomeScreen() {
   }, [router]);
 
   return (
-    <ThemedSafeAreaView>
+    <ThemedView>
       <h1>Home</h1>
-    </ThemedSafeAreaView>
+    </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});

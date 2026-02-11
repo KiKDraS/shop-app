@@ -1,10 +1,10 @@
-import { ThemedSafeAreaView } from "@/components/themed-safe-area-view";
+import { ThemedView } from "@/components/layout";
 import React from "react";
 
 export default function CartPage() {
   return (
-    <ThemedSafeAreaView>
+    <ThemedView>
       <h1>Cart</h1>
-    </ThemedSafeAreaView>
+    </ThemedView>
   );
 }

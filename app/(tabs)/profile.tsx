@@ -1,10 +1,10 @@
-import { ThemedSafeAreaView } from "@/components/themed-safe-area-view";
+import { ThemedView } from "@/components/layout";
 import React from "react";
 
 export default function ProfilePage() {
   return (
-    <ThemedSafeAreaView>
+    <ThemedView>
       <h1>Profile</h1>
-    </ThemedSafeAreaView>
+    </ThemedView>
   );
 }
