@@ -1,34 +1,51 @@
-import { ParallaxScrollView, ThemedView } from "@/components/layout";
+import { ParallaxScrollView, ThemedSafeAreaView } from "@/components/layout";
+import { Product } from "@/components/tabs/home/product-card";
+import { ProductSkeleton } from "@/components/tabs/product/product-skeleton/product-skeleton";
 import { Button } from "@/components/ui";
+import { borderRadius } from "@/constants";
+import mock from "@/data/mock.json";
 import { useTheme } from "@/hooks";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { Suspense, use } from "react";
 import { Image, Platform, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const PRODUCT_IMAGE_URL =
-  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop";
+const fetchProductDetails = async (id: string | string[]): Promise<Product> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const product = mock.products.find((p) => p.id === id);
+      if (product) {
+        resolve(product as Product);
+      } else {
+        reject(new Error("Producto no encontrado"));
+      }
+    }, 1500);
+  });
+};
 
-export default function ProductPage() {
-  const { id } = useLocalSearchParams();
-  console.log(id);
-
+function ProductContent({
+  productPromise,
+}: Readonly<{
+  productPromise: Promise<Product>;
+}>) {
   const router = useRouter();
   const { colors, spacing, textStyles } = useTheme();
+  const insets = useSafeAreaInsets();
+  const product = use(productPromise);
 
   return (
-    <ThemedView>
-      <Stack.Screen options={{ headerShown: false }} />
-
+    <>
       <ParallaxScrollView
         headerImage={
           <Image
-            source={{ uri: PRODUCT_IMAGE_URL }}
+            source={{ uri: product.images[0] }}
             style={styles.headerImage}
           />
         }
       >
         <View>
           <Text style={[textStyles.screenTitle, { color: colors.textPrimary }]}>
-            Premium Wireless Headphones
+            {product.title}
           </Text>
           <View
             style={{
@@ -39,18 +56,16 @@ export default function ProductPage() {
             }}
           >
             <Text style={[textStyles.sectionTitle, { color: colors.primary }]}>
-              $249.99
+              ${product.price.toFixed(2)}
             </Text>
             <Text style={{ textDecorationLine: "line-through", color: "gray" }}>
-              $289.99
+              ${(product.price * 1.15).toFixed(2)}
             </Text>
           </View>
         </View>
 
         <Text style={[textStyles.bodyRegular, { color: colors.textPrimary }]}>
-          Experience premium audio quality with our wireless headphones.
-          Featuring advanced noise cancellation, 30-hour battery life... (Aquí
-          va el resto de la descripción, reviews, etc. para probar el scroll)
+          {product.description}
         </Text>
         <View
           style={{
@@ -61,28 +76,54 @@ export default function ProductPage() {
         />
       </ParallaxScrollView>
 
-      <View style={[styles.footer, { borderTopColor: colors.border }]}>
+      {/* Footer Fijo */}
+      <View
+        style={[
+          styles.footer,
+          { borderTopColor: colors.border, backgroundColor: colors.background },
+        ]}
+      >
         <Button
           onPress={() => console.log("Add to cart")}
-          title={"Add to cart"}
+          text={"Add to cart"}
         />
       </View>
 
-      <View style={styles.floatingHeader}>
+      {/* Header Flotante */}
+      <View style={[styles.floatingHeader, { top: insets.top + spacing.md }]}>
         <Button
           onPress={() => router.back()}
-          title={"←"}
           variant="outline"
-          style={styles.iconButton}
+          icon="arrow.left"
+          style={[styles.iconButton, { backgroundColor: colors.background }]}
+          iconColor={colors.onPrimary}
+          iconSize={16}
         />
         <Button
           onPress={() => console.log("Toggle favorite")}
-          title={"♡"}
           variant="outline"
-          style={styles.iconButton}
+          icon="heart.fill"
+          style={[styles.iconButton, { backgroundColor: colors.background }]}
+          iconColor={colors.onPrimary}
+          iconSize={16}
         />
       </View>
-    </ThemedView>
+    </>
+  );
+}
+
+export default function ProductPage() {
+  const { id } = useLocalSearchParams();
+  const productPromise = fetchProductDetails(id);
+
+  return (
+    <ThemedSafeAreaView style={styles.container}>
+      <Stack.Screen options={{ headerShown: false }} />
+
+      <Suspense fallback={<ProductSkeleton />}>
+        <ProductContent productPromise={productPromise} />
+      </Suspense>
+    </ThemedSafeAreaView>
   );
 }
 
@@ -112,7 +153,7 @@ const styles = StyleSheet.create({
   iconButton: {
     width: 44,
     height: 44,
-    borderRadius: 22,
+    borderRadius: borderRadius.xxl,
     justifyContent: "center",
     alignItems: "center",
     elevation: 3,

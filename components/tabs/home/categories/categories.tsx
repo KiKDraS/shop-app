@@ -11,7 +11,7 @@ export function Categories() {
   return (
     <View style={styles.container}>
       <Text
-        style={[textStyles.sectionTitle, { paddingHorizontal: spacing.sm }]}
+        style={[textStyles.sectionTitle, { paddingHorizontal: spacing.md }]}
       >
         Categories
       </Text>

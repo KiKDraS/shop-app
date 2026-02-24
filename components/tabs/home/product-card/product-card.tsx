@@ -1,26 +1,52 @@
-import { IconSymbol } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { borderRadius, spacing } from "@/constants/theme";
 import { useTheme } from "@/hooks";
+import { useRouter } from "expo-router";
+import { startTransition, useOptimistic, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import type { Product } from "./types";
 
 interface ProductCardProps {
   product: Product;
-  onPress?: () => void;
-  onFavoritePress?: () => void;
 }
 
-export function ProductCard({
-  product,
-  onPress,
-  onFavoritePress,
-}: Readonly<ProductCardProps>) {
+export function ProductCard({ product }: Readonly<ProductCardProps>) {
   const { colors, textStyles, spacing } = useTheme();
+  const router = useRouter();
+  const [isFavorite, setIsFavorite] = useState(product.isFavorite);
+  const [optimisticFavorite, addOptimisticFavorite] = useOptimistic(
+    isFavorite,
+    (_, optimisticValue: boolean) => optimisticValue,
+  );
+
+  const handleProductPress = (productId: string) => {
+    router.push(`/product/${productId}`);
+  };
+
+  const modifyFavoriteStatusOnServer = async (productId: string) => {
+    try {
+      console.log(`Modificar favorito id: ${productId}`);
+
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      startTransition(() => {
+        setIsFavorite(!optimisticFavorite);
+      });
+    } catch (error) {
+      console.error("Error al guardar en DB", error);
+    }
+  };
+
+  const handleFavoritePress = (productId: string) => {
+    startTransition(() => {
+      addOptimisticFavorite(!optimisticFavorite);
+    });
+    modifyFavoriteStatusOnServer(productId);
+  };
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={onPress}
+      onPress={() => handleProductPress(product.id)}
       style={[
         styles.cardContainer,
         {
@@ -43,9 +69,21 @@ export function ProductCard({
           resizeMode="cover"
         />
 
-        <TouchableOpacity
+        <Button
+          onPress={() => handleFavoritePress(product.id)}
+          variant="outline"
+          icon={isFavorite ? "heart.fill" : "heart"}
+          style={[
+            styles.favoriteButton,
+            { backgroundColor: colors.background },
+          ]}
+          iconColor={isFavorite ? colors.danger : colors.textSecondary}
+          iconSize={16}
+        />
+
+        {/* <TouchableOpacity
           activeOpacity={0.7}
-          onPress={onFavoritePress}
+          onPress={() => handleFavoritePress(product.id)}
           style={[
             styles.favoriteButton,
             {
@@ -55,11 +93,11 @@ export function ProductCard({
           ]}
         >
           <IconSymbol
-            name={product.isFavorite ? "heart.fill" : "heart"}
+            name={isFavorite ? "heart.fill" : "heart"}
             size={16}
-            color={product.isFavorite ? colors.danger : colors.textSecondary}
+            color={isFavorite ? colors.danger : colors.textSecondary}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={{ padding: spacing.sm }}>
@@ -105,9 +143,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 8,
     right: 8,
-    width: 28,
-    height: 28,
-    borderRadius: borderRadius.md,
+    width: 32,
+    height: 32,
+    borderRadius: borderRadius.xxl,
     justifyContent: "center",
     alignItems: "center",
     shadowOffset: { width: 0, height: 2 },

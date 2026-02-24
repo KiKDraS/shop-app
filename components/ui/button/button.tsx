@@ -11,17 +11,23 @@ import { ButtonVariant } from "./types";
 import { getButtonVariantStyles } from "./utils";
 
 interface ButtonProps extends TouchableOpacityProps {
-  title?: string;
+  text?: string;
+  textSize?: number;
   variant?: ButtonVariant;
   isLoading?: boolean;
   icon?: IconSymbolName;
+  iconColor?: string;
+  iconSize?: number;
 }
 
 export function Button({
-  title,
+  text,
+  textSize,
   variant = "primary",
   isLoading,
   icon,
+  iconColor,
+  iconSize,
   style,
   ...props
 }: Readonly<ButtonProps>) {
@@ -40,7 +46,8 @@ export function Button({
         styles.container,
         {
           borderRadius: borderRadius.md,
-          paddingVertical: spacing.md,
+          paddingVertical: text ? spacing.md : 0,
+          paddingHorizontal: text ? spacing.md : 0,
         },
         variantStyles.container,
         style,
@@ -56,14 +63,20 @@ export function Button({
           {icon && (
             <IconSymbol
               name={icon}
-              size={20}
-              color={contentColor}
-              style={{ marginRight: title ? 8 : 0 }}
+              size={iconSize ?? 20}
+              color={iconColor ?? contentColor}
+              style={{ marginRight: text ? 8 : 0 }}
             />
           )}
-          {title && (
-            <Text style={[textStyles.buttonText, variantStyles.text]}>
-              {title}
+          {text && (
+            <Text
+              style={[
+                textStyles.buttonText,
+                variantStyles.text,
+                { fontSize: textSize },
+              ]}
+            >
+              {text}
             </Text>
           )}
         </>

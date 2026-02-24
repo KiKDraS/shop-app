@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: spacing.md,
     marginRight: spacing.md,
-    height: 44, // Altura estándar para áreas táctiles
+    height: 44,
   },
   searchInput: {
     flex: 1,

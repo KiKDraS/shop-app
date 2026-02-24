@@ -1,41 +1,13 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { HapticTab, IconSymbol, IconSymbolName } from "@/components/ui";
+import { HapticTab, IconSymbol } from "@/components/ui";
 import { Badge } from "@/components/ui/badge";
+import { tabs } from "@/constants/routes";
 import { colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
-type tab = {
-  name: string;
-  title: string;
-  icon: IconSymbolName;
-};
-
-const TABS: Record<string, tab> = {
-  HOME: {
-    name: "index",
-    title: "Home",
-    icon: "house.fill",
-  },
-  SEARCH: {
-    name: "search",
-    title: "Search",
-    icon: "magnifyingglass",
-  },
-  CART: {
-    name: "cart",
-    title: "Cart",
-    icon: "cart.fill",
-  },
-  PROFILE: {
-    name: "profile",
-    title: "Profile",
-    icon: "person.fill",
-  },
-};
 
 export default function TabLayout() {
   const colorScheme = useColorScheme() ?? "light";
@@ -61,14 +33,14 @@ export default function TabLayout() {
         },
       }}
     >
-      {Object.values(TABS).map((tab) => (
+      {Object.values(tabs).map((tab) => (
         <Tabs.Screen
           key={tab.name}
           name={tab.name}
           options={{
             title: tab.title,
             tabBarIcon: ({ color }) => {
-              if (tab.name === TABS.CART.name) {
+              if (tab.name === tabs.cart.name) {
                 return (
                   <View style={{ position: "relative" }}>
                     <IconSymbol size={24} name={tab.icon} color={color} />

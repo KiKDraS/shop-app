@@ -1,29 +1,30 @@
+import { Button } from "@/components/ui";
+import { tabs } from "@/constants";
 import { spacing } from "@/constants/theme/spacing";
 import { useTheme } from "@/hooks/use-theme";
+import { useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export function FeatureProductsHeader() {
-  const { colors, textStyles } = useTheme();
+  const { textStyles } = useTheme();
+  const router = useRouter();
 
   const handleViewAll = () => {
-    console.log("Redirect to /search");
+    router.push(tabs.search.href);
   };
+
   return (
     <View style={[styles.sectionHeader, { marginBottom: spacing.md }]}>
       <Text style={[textStyles.sectionTitle, { marginBottom: 0 }]}>
         Featured Products
       </Text>
-      <TouchableOpacity activeOpacity={0.7} onPress={handleViewAll}>
-        <Text
-          style={[
-            textStyles.bodyRegular,
-            { color: colors.primary, fontWeight: "500", fontSize: 12 },
-          ]}
-        >
-          View All
-        </Text>
-      </TouchableOpacity>
+      <Button
+        text="View All"
+        textSize={12}
+        variant="ghost"
+        onPress={handleViewAll}
+      />
     </View>
   );
 }
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: spacing.sm,
+    paddingHorizontal: spacing.md,
     marginTop: spacing.lg,
   },
 });
