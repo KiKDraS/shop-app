@@ -1,10 +1,11 @@
-import { Badge, IconSymbol } from "@/components/ui";
 import { spacing } from "@/constants";
 import { useTheme } from "@/hooks";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Badge } from "../badge";
+import { IconSymbol } from "../icon-symbol";
 import { SearchBar } from "./search-bar";
 
-export function Header() {
+export function SearchBarHeader() {
   const { colors } = useTheme();
 
   return (

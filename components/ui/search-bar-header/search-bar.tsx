@@ -1,8 +1,8 @@
-import { IconSymbol } from "@/components/ui";
-import { spacing } from "@/constants/theme";
+import { spacing } from "@/constants";
 import { useTheme } from "@/hooks";
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
+import { IconSymbol } from "../icon-symbol";
 
 export function SearchBar() {
   const { colors, textStyles, borderRadius } = useTheme();

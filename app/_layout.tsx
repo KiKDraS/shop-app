@@ -13,7 +13,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 
-import { AppDarkTheme, AppLightTheme } from "@/constants/theme";
+import { AppDarkTheme, AppLightTheme } from "@/constants";
 import { useColorScheme } from "@/hooks";
 
 SplashScreen.preventAutoHideAsync();

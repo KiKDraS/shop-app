@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui";
-import { borderRadius, spacing } from "@/constants/theme";
+import { borderRadius, spacing } from "@/constants";
 import { useTheme } from "@/hooks";
 import { useRouter } from "expo-router";
 import { startTransition, useOptimistic, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import type { Product } from "./types";
+import type { Product } from "../../product/types";
 
 interface ProductCardProps {
   product: Product;

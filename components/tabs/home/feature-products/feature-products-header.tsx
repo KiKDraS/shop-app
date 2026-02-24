@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui";
-import { tabs } from "@/constants";
-import { spacing } from "@/constants/theme/spacing";
-import { useTheme } from "@/hooks/use-theme";
+import { spacing, tabs } from "@/constants";
+import { useTheme } from "@/hooks";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";

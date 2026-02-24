@@ -1,10 +1,11 @@
 import { ThemedSafeAreaView } from "@/components/layout";
-import { Categories, FeatureProducts, Header } from "@/components/tabs";
+import { FeatureProducts } from "@/components/tabs";
+import { Categories, SearchBarHeader } from "@/components/ui";
 
 export default function HomeScreen() {
   return (
     <ThemedSafeAreaView>
-      <Header />
+      <SearchBarHeader />
       <Categories />
       <FeatureProducts />
     </ThemedSafeAreaView>

@@ -1,5 +1,5 @@
-import { spacing } from "@/constants/theme";
-import { useTheme } from "@/hooks/use-theme";
+import { spacing } from "@/constants";
+import { useTheme } from "@/hooks";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { IconSymbol, IconSymbolName } from "../../../ui/icon-symbol";
 

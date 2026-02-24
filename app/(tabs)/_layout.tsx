@@ -1,10 +1,8 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { HapticTab, IconSymbol } from "@/components/ui";
-import { Badge } from "@/components/ui/badge";
-import { tabs } from "@/constants/routes";
-import { colors } from "@/constants/theme";
+import { Badge, HapticTab, IconSymbol } from "@/components/ui";
+import { colors, tabs } from "@/constants";
 import { useColorScheme } from "@/hooks";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

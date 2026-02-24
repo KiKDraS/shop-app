@@ -1,9 +1,9 @@
 import { IconSymbolName } from "@/components/ui";
-import { spacing } from "@/constants/theme";
+import { spacing } from "@/constants";
 import { useTheme } from "@/hooks";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import mock from "../../../../data/mock.json";
-import { CategoryItem } from "../category-item";
+import mock from "../../../data/mock.json";
+import { CategoryItem } from "../../tabs/home/category-item";
 
 export function Categories() {
   const { textStyles, spacing } = useTheme();

@@ -1,5 +1,5 @@
-import { borderRadius, spacing } from "@/constants/theme";
-import { useTheme } from "@/hooks/use-theme";
+import { borderRadius, spacing } from "@/constants";
+import { useTheme } from "@/hooks";
 import { StyleSheet, Text, View } from "react-native";
 import { POSITION_STYLES } from "./constants";
 import { BadgePosition } from "./types";

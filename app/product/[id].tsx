@@ -1,6 +1,5 @@
 import { ParallaxScrollView, ThemedSafeAreaView } from "@/components/layout";
-import { Product } from "@/components/tabs/home/product-card";
-import { ProductSkeleton } from "@/components/tabs/product/product-skeleton/product-skeleton";
+import { type Product, ProductSkeleton } from "@/components/tabs";
 import { Button } from "@/components/ui";
 import { borderRadius } from "@/constants";
 import mock from "@/data/mock.json";
