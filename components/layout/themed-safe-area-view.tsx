@@ -9,5 +9,10 @@ export function ThemedSafeAreaView({
 }: Readonly<ViewProps>) {
   const backgroundColor = useThemeColor("background");
 
-  return <SafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return (
+    <SafeAreaView
+      style={[{ flex: 1, backgroundColor }, style]}
+      {...otherProps}
+    />
+  );
 }

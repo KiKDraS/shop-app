@@ -80,24 +80,6 @@ export function ProductCard({ product }: Readonly<ProductCardProps>) {
           iconColor={isFavorite ? colors.danger : colors.textSecondary}
           iconSize={16}
         />
-
-        {/* <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => handleFavoritePress(product.id)}
-          style={[
-            styles.favoriteButton,
-            {
-              backgroundColor: colors.background,
-              shadowColor: colors.surface,
-            },
-          ]}
-        >
-          <IconSymbol
-            name={isFavorite ? "heart.fill" : "heart"}
-            size={16}
-            color={isFavorite ? colors.danger : colors.textSecondary}
-          />
-        </TouchableOpacity> */}
       </View>
 
       <View style={{ padding: spacing.sm }}>

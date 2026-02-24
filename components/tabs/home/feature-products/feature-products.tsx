@@ -7,13 +7,14 @@ import { FeatureProductsHeader } from "./feature-products-header";
 
 export function FeatureProducts() {
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <FeatureProductsHeader />
       <FlatList
         data={mock.products}
+        style={{ flex: 1 }}
         contentContainerStyle={{
           flexGrow: 1,
-          paddingBottom: spacing.xxl,
+          paddingBottom: spacing.xs,
         }}
         keyExtractor={(item) => item.id}
         numColumns={2}
@@ -23,9 +24,8 @@ export function FeatureProducts() {
           marginBottom: spacing.md,
         }}
         showsVerticalScrollIndicator={false}
-        ListFooterComponent={<View style={{ height: 200 }} />}
         renderItem={({ item }) => <ProductCard product={item} />}
       />
-    </>
+    </View>
   );
 }
