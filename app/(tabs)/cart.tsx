@@ -1,10 +1,11 @@
-import { ThemedView } from "@/components/layout";
+import { ThemedSafeAreaView } from "@/components/layout";
 import React from "react";
+import { Text } from "react-native";
 
 export default function CartPage() {
   return (
-    <ThemedView>
-      <h1>Cart</h1>
-    </ThemedView>
+    <ThemedSafeAreaView>
+      <Text>Cart</Text>
+    </ThemedSafeAreaView>
   );
 }

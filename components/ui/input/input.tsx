@@ -1,6 +1,5 @@
-// /input/input.tsx
 import { ThemedView } from "@/components/layout";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/hooks";
 import { useState } from "react";
 import {
   StyleSheet,
@@ -10,8 +9,9 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Button } from "../button/button"; // <--- Importamos Button
-import { IconSymbol, IconSymbolName } from "../icon-symbol";
+import { Button } from "../button/button";
+import { IconSymbol } from "../icon-symbol/icon-symbol";
+import { IconSymbolName } from "../icon-symbol/types";
 import { getInputStyles } from "./utils";
 
 interface InputProps extends TextInputProps {

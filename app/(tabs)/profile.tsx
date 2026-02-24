@@ -1,10 +1,11 @@
-import { ThemedView } from "@/components/layout";
+import { ThemedSafeAreaView } from "@/components/layout";
 import React from "react";
+import { Text } from "react-native";
 
 export default function ProfilePage() {
   return (
-    <ThemedView>
-      <h1>Profile</h1>
-    </ThemedView>
+    <ThemedSafeAreaView>
+      <Text>Profile</Text>
+    </ThemedSafeAreaView>
   );
 }

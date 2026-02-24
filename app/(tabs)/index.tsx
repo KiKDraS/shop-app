@@ -1,17 +1,12 @@
-import { ThemedView } from "@/components/layout";
-import { useRouter } from "expo-router";
-import { useEffect } from "react";
+import { ThemedSafeAreaView } from "@/components/layout";
+import { Categories, Header } from "@/components/tabs";
 
 export default function HomeScreen() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push("/product/123");
-  }, [router]);
-
   return (
-    <ThemedView>
-      <h1>Home</h1>
-    </ThemedView>
+    <ThemedSafeAreaView>
+      <Header />
+      <Categories />
+      {/* <FeatureProducts /> */}
+    </ThemedSafeAreaView>
   );
 }
