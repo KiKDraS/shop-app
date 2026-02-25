@@ -1,9 +1,11 @@
 import { ParallaxScrollView, ThemedSafeAreaView } from "@/components/layout";
 import { type Product, ProductSkeleton } from "@/components/tabs";
 import { Button } from "@/components/ui";
+import { FavoriteButton } from "@/components/ui/favorite-button";
 import { borderRadius } from "@/constants";
 import mock from "@/data/mock.json";
 import { useTheme } from "@/hooks";
+import { useFavorite } from "@/hooks/use-favorite";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { Suspense, use } from "react";
 import { Image, Platform, StyleSheet, Text, View } from "react-native";
@@ -31,15 +33,13 @@ function ProductContent({
   const { colors, spacing, textStyles } = useTheme();
   const insets = useSafeAreaInsets();
   const product = use(productPromise);
+  const { isFavorite, toggleFavorite } = useFavorite(product.isFavorite);
 
   return (
     <>
       <ParallaxScrollView
         headerImage={
-          <Image
-            source={{ uri: product.images[0] }}
-            style={styles.headerImage}
-          />
+          <Image source={{ uri: product.image }} style={styles.headerImage} />
         }
       >
         <View>
@@ -94,17 +94,21 @@ function ProductContent({
           onPress={() => router.back()}
           variant="outline"
           icon="arrow.left"
-          style={[styles.iconButton, { backgroundColor: colors.background }]}
+          style={[
+            styles.iconButton,
+            {
+              backgroundColor: colors.background,
+              borderRadius: borderRadius.xxl,
+            },
+          ]}
           iconColor={colors.onPrimary}
           iconSize={16}
         />
-        <Button
-          onPress={() => console.log("Toggle favorite")}
-          variant="outline"
-          icon="heart.fill"
-          style={[styles.iconButton, { backgroundColor: colors.background }]}
-          iconColor={colors.onPrimary}
-          iconSize={16}
+
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggle={() => toggleFavorite(product.id)}
+          style={styles.iconButton}
         />
       </View>
     </>
@@ -152,10 +156,5 @@ const styles = StyleSheet.create({
   iconButton: {
     width: 44,
     height: 44,
-    borderRadius: borderRadius.xxl,
-    justifyContent: "center",
-    alignItems: "center",
-    elevation: 3,
-    borderColor: "#3636361A",
   },
 });

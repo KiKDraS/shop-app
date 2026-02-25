@@ -12,9 +12,7 @@
       "title": "Auriculares Noise Cancelling",
       "description": "Auriculares inalámbricos con cancelación de ruido activa y 30 horas de batería.",
       "price": 299.99,
-      "images": [
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop",
       "rating": 4.8,
       "stock": 15
     },
@@ -24,9 +22,7 @@
       "title": "Reloj Inteligente Pro",
       "description": "Monitoreo de salud avanzado, GPS integrado y resistencia al agua.",
       "price": 199.5,
-      "images": [
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop",
       "rating": 4.5,
       "stock": 8
     },
@@ -36,9 +32,7 @@
       "title": "Zapatillas Urbanas Retro",
       "description": "Diseño clásico con comodidad moderna. Ideales para el uso diario.",
       "price": 89.0,
-      "images": [
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop",
       "rating": 4.2,
       "stock": 20
     },
@@ -48,9 +42,7 @@
       "title": "Chaqueta de Mezclilla",
       "description": "Estilo atemporal, duradera y combina con todo.",
       "price": 55.0,
-      "images": [
-        "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?q=80&w=400&auto=format&fit=crop",
       "rating": 4.6,
       "stock": 5
     },
@@ -60,9 +52,7 @@
       "title": "Lámpara de Escritorio LED",
       "description": "Luz regulable, carga inalámbrica para móvil integrada y diseño minimalista.",
       "price": 35.0,
-      "images": [
-        "https://images.unsplash.com/photo-1534073828943-f801091a7d58?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1534073828943-f801091a7d58?q=80&w=400&auto=format&fit=crop",
       "rating": 4.9,
       "stock": 0
     },
@@ -72,9 +62,7 @@
       "title": "Planta Artificial Decorativa",
       "description": "Dale vida a tu espacio sin necesidad de regar. Maceta de cerámica incluida.",
       "price": 25.0,
-      "images": [
-        "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=400&auto=format&fit=crop",
       "rating": 4.0,
       "stock": 12
     },
@@ -84,9 +72,7 @@
       "title": "Botella de Agua Térmica",
       "description": "Mantiene el agua fría por 24 horas. Acero inoxidable.",
       "price": 18.0,
-      "images": [
-        "https://images.unsplash.com/photo-1602143407151-01114192003f?q=80&w=400&auto=format&fit=crop"
-      ],
+      "image": "https://images.unsplash.com/photo-1602143407151-01114192003f?q=80&w=400&auto=format&fit=crop",
       "rating": 4.7,
       "stock": 50
     }

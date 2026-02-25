@@ -1,4 +1,5 @@
 import { ThemedSafeAreaView } from "@/components/layout";
+import { PARALLAX_HEADER_HEIGHT } from "@/components/layout/parallax-scroll-view";
 import { Skeleton } from "@/components/ui";
 import { useTheme } from "@/hooks";
 import { StyleSheet, View } from "react-native";
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   headerImage: {
     width: "100%",
-    height: 250,
+    height: PARALLAX_HEADER_HEIGHT,
     borderRadius: 0,
   },
   title: {

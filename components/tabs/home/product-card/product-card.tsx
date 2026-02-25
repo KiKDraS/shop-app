@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui";
+import { FavoriteButton } from "@/components/ui/favorite-button";
 import { borderRadius, spacing } from "@/constants";
 import { useTheme } from "@/hooks";
+import { useFavorite } from "@/hooks/use-favorite";
 import { useRouter } from "expo-router";
-import { startTransition, useOptimistic, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import type { Product } from "../../product/types";
 
@@ -13,34 +13,10 @@ interface ProductCardProps {
 export function ProductCard({ product }: Readonly<ProductCardProps>) {
   const { colors, textStyles, spacing } = useTheme();
   const router = useRouter();
-  const [isFavorite, setIsFavorite] = useState(product.isFavorite);
-  const [optimisticFavorite, addOptimisticFavorite] = useOptimistic(
-    isFavorite,
-    (_, optimisticValue: boolean) => optimisticValue,
-  );
+  const { isFavorite, toggleFavorite } = useFavorite(product.isFavorite);
 
   const handleProductPress = (productId: string) => {
     router.push(`/product/${productId}`);
-  };
-
-  const modifyFavoriteStatusOnServer = async (productId: string) => {
-    try {
-      console.log(`Modificar favorito id: ${productId}`);
-
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      startTransition(() => {
-        setIsFavorite(!optimisticFavorite);
-      });
-    } catch (error) {
-      console.error("Error al guardar en DB", error);
-    }
-  };
-
-  const handleFavoritePress = (productId: string) => {
-    startTransition(() => {
-      addOptimisticFavorite(!optimisticFavorite);
-    });
-    modifyFavoriteStatusOnServer(productId);
   };
 
   return (
@@ -64,21 +40,15 @@ export function ProductCard({ product }: Readonly<ProductCardProps>) {
         ]}
       >
         <Image
-          source={{ uri: product.images[0] }}
+          source={{ uri: product.image }}
           style={styles.image}
           resizeMode="cover"
         />
 
-        <Button
-          onPress={() => handleFavoritePress(product.id)}
-          variant="outline"
-          icon={isFavorite ? "heart.fill" : "heart"}
-          style={[
-            styles.favoriteButton,
-            { backgroundColor: colors.background },
-          ]}
-          iconColor={isFavorite ? colors.danger : colors.textSecondary}
-          iconSize={16}
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggle={() => toggleFavorite(product.id)}
+          style={styles.favoriteButton}
         />
       </View>
 
@@ -125,14 +95,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 8,
     right: 8,
-    width: 32,
-    height: 32,
-    borderRadius: borderRadius.xxl,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
   },
 });
