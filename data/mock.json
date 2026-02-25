@@ -14,7 +14,9 @@
       "price": 299.99,
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop",
       "rating": 4.8,
-      "stock": 15
+      "stock": 15,
+      "availableColors": ["#000000", "#FFFFFF", "#FF0000"],
+      "discountPercentage": 13
     },
     {
       "id": "102",
@@ -24,7 +26,9 @@
       "price": 199.5,
       "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop",
       "rating": 4.5,
-      "stock": 8
+      "stock": 8,
+      "availableColors": ["#000000", "#FFFFFF", "#FF0000"],
+      "discountPercentage": 7
     },
     {
       "id": "201",
@@ -34,7 +38,9 @@
       "price": 89.0,
       "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop",
       "rating": 4.2,
-      "stock": 20
+      "stock": 20,
+      "availableColors": ["#000000", "#FFFFFF", "#FF0000"],
+      "discountPercentage": 15
     },
     {
       "id": "202",
@@ -44,7 +50,9 @@
       "price": 55.0,
       "image": "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?q=80&w=400&auto=format&fit=crop",
       "rating": 4.6,
-      "stock": 5
+      "stock": 5,
+      "availableColors": ["#000000", "#FFFFFF", "#FF0000"],
+      "discountPercentage": 5
     },
     {
       "id": "301",
@@ -54,7 +62,9 @@
       "price": 35.0,
       "image": "https://images.unsplash.com/photo-1534073828943-f801091a7d58?q=80&w=400&auto=format&fit=crop",
       "rating": 4.9,
-      "stock": 0
+      "stock": 0,
+      "availableColors": [],
+      "discountPercentage": 0
     },
     {
       "id": "302",
@@ -64,7 +74,9 @@
       "price": 25.0,
       "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=400&auto=format&fit=crop",
       "rating": 4.0,
-      "stock": 12
+      "stock": 12,
+      "availableColors": [],
+      "discountPercentage": 0
     },
     {
       "id": "401",
@@ -74,7 +86,9 @@
       "price": 18.0,
       "image": "https://images.unsplash.com/photo-1602143407151-01114192003f?q=80&w=400&auto=format&fit=crop",
       "rating": 4.7,
-      "stock": 50
+      "stock": 50,
+      "availableColors": ["#000000", "#FFFFFF", "#FF0000"],
+      "discountPercentage": 10
     }
   ]
 }

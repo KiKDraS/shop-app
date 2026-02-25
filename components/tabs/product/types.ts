@@ -7,5 +7,7 @@ export interface Product {
   image: string;
   rating: number;
   stock: number;
+  availableColors: string[];
+  discountPercentage?: number;
   isFavorite?: boolean;
 }

@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks";
 import { useFavorite } from "@/hooks/use-favorite";
 import { useRouter } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import type { Product } from "../../product/types";
+import { calculateDiscountedPrice, type Product } from "../../product";
 
 interface ProductCardProps {
   product: Product;
@@ -63,7 +63,7 @@ export function ProductCard({ product }: Readonly<ProductCardProps>) {
           {product.title}
         </Text>
         <Text style={[textStyles.priceCard, { marginTop: spacing.xs }]}>
-          ${product.price.toFixed(2)}
+          ${calculateDiscountedPrice(product.price, product.discountPercentage)}
         </Text>
       </View>
     </TouchableOpacity>
